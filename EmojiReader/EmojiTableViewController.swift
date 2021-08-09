@@ -8,6 +8,12 @@
 import UIKit
 
 class EmojiTableViewController: UITableViewController {
+    
+    let objects = [
+        Emoji(emoji: "😇", name: "Angel", description: "Ангельская улыбка, добрые побуждения", isFavourite: false),
+        Emoji(emoji: "😎", name: "Cool man", description: "Пока на расслабоне, на чилле", isFavourite: false),
+        Emoji(emoji: "😏", name: "Nice cock", description: "Awesome balls", isFavourite: false),
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,15 +35,14 @@ class EmojiTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 5
+        return objects.count
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EmojiCell", for: indexPath) as! EmojiTableViewCell
-        cell.emojiLabel.text = "😎"
-        cell.nameLabel.text = "Smile"
-        cell.descriptionLabel.text = "Cool man"
+        let object = objects[indexPath.row]
+        cell.setDataForCell(object: object)
 
         return cell
     }
