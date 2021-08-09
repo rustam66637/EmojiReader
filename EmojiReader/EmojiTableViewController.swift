@@ -18,7 +18,6 @@ class EmojiTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.title = "Emoji Reader"
         self.navigationItem.leftBarButtonItem = self.editButtonItem
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
 
     // MARK: - Table view data source
@@ -35,8 +34,10 @@ class EmojiTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "\(indexPath)"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EmojiCell", for: indexPath) as! EmojiTableViewCell
+        cell.emojiLabel.text = "😎"
+        cell.nameLabel.text = "Smile"
+        cell.descriptionLabel.text = "Cool man"
 
         return cell
     }
