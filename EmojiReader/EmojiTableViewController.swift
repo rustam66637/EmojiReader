@@ -22,6 +22,17 @@ class EmojiTableViewController: UITableViewController {
         // Кнопка режима редактирования
         self.navigationItem.leftBarButtonItem = self.editButtonItem
     }
+    
+    @IBAction func unwindSegue(segue: UIStoryboardSegue) {
+        guard segue.identifier == "saveSegue" else {return}
+        
+        let sourceViewController = segue.source as! NewEmojiTableViewController
+        let emoji = sourceViewController.emoji
+        
+        let newIndexPath = IndexPath(row: objects.count, section: 0)
+        objects.append(emoji)
+        tableView.insertRows(at: [newIndexPath], with: .fade)
+    }
 
     // MARK: - Table view data source
 

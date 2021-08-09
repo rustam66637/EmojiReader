@@ -15,7 +15,6 @@ class EmojiTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
     func setDataForCell(object: Emoji) {
